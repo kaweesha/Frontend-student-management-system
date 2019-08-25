@@ -1,0 +1,20 @@
+<div class="container custom-container">
+
+<h3>Add Student</h3>
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="student.firstName"> 
+    <label for="float-input">First Name</label>
+</span>
+<br><br>
+<span class="ui-float-label">
+  <input id="float-input" type="text" size="30" pInputText [(ngModel)]="student.lastName"> 
+  <label for="float-input">Last Name</label>
+</span>
+<br><br>
+<span class="ui-float-label">
+  <input id="float-input" type="email" size="30" pInputText [(ngModel)]="student.emailAddress"> 
+  <label for="float-input">Email Address</label>
+</span>
+<br><br>
+<button pButton type="button" label="Click" (click)="addStudent()" ></button>
+</div>

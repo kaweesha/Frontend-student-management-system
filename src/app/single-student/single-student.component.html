@@ -1,0 +1,29 @@
+
+<div class="flex-container">
+    <div class = "flex-item">
+      {{studentObj.firstName}}
+      <!-- {{studentName}} -->
+    </div>
+    <div class = "flex-item">
+      <!-- <button (click)="studentDetailsSelected()" routerLink="/detailsPage">Details</button> -->
+      <!-- <button (click)="studentDetailsSelected()">Details</button> -->
+
+      <!-- <button [routerLink]="['/detailsPage', studentName]">Details</button> -->
+      <button [routerLink]="['/detailsPage', studentObj.firstName]">Details</button>
+    </div>
+    <div class = "flex-item">
+      <!-- <button (click)="studentMarksSelected()" routerLink="/marksPage">Marks</button> -->
+
+      <!-- <button [routerLink]="['/marksPage', studentName]">Marks</button> -->
+      <button [routerLink]="['/marksPage', studentObj.firstName]">Marks</button>
+
+      <!-- <button (click)="studentMarksSelected()">Marks</button> -->
+    </div>
+    <div class = "flex-item">
+      <!-- <button [routerLink]="['/editPage', studentName]">Edit</button> -->
+      <button [routerLink]="['/editPage', studentObj.firstName]">Edit</button>
+    </div>
+    <div class = "flex-item">
+      <button>Delete</button>
+    </div>
+  </div>

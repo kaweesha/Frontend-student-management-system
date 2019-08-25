@@ -1,0 +1,16 @@
+<div class="container">
+  <div>
+    {{className}}
+  </div>
+  <div>
+    <span class="one">Class teacher:</span>
+    <span class="two">{{classTeacherName}}</span>
+  </div>
+  <div>
+    <!-- <app-single-student *ngFor="let i of classStudentList" [studentName]=i></app-single-student> -->
+    <app-single-student *ngFor="let i of classStudentsObjList" [studentObj]=i></app-single-student>
+  </div>
+  <div>
+    <button routerLink="/formPage">Add Student</button>
+  </div>
+</div>
