@@ -16,5 +16,10 @@
   <label for="float-input">Email Address</label>
 </span>
 <br><br>
-<button pButton type="button" label="Click" (click)="addStudent()" ></button>
+<span class="ui-float-label">
+  <input id="float-input" type="text" size="30" pInputText [(ngModel)]="student.className"> 
+  <label for="float-input">Class Name</label>
+</span>
+<br><br>
+<button pButton type="button" label="Add Student" (click)="addStudent()" ></button>
 </div>

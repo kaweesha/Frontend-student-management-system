@@ -18,6 +18,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import {TableModule} from 'primeng/table';
     FormsModule,
     InputTextModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    TableModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

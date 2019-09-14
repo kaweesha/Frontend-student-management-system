@@ -9,7 +9,7 @@ import { RestApiService } from "../shared/rest-api.service";
 })
 export class StudentFormComponent implements OnInit{
 
-  student = {firstName:"" , lastName:"", emailAddress:""}
+  student = {firstName:"" , lastName:"", emailAddress:"", className:""}
 
   constructor(
     public restApi: RestApiService, 

@@ -3,4 +3,5 @@ export class Student {
     public firstName: string;
     public lastName: string;
     public emailAddress: string;
+    public className: string;
  }

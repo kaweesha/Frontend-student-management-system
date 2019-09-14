@@ -1,16 +1,36 @@
 <div class="container">
-  <div>
-    {{className}}
+  <div ng-app="ngchangeApp" ng-controller="ngchangeCtrl">
+      <p-dropdown [options]="ClassesList" 
+                  [(ngModel)]="selectedOneClass" 
+                  placeholder="Select a Class" 
+                  optionLabel="name" 
+                  [showClear]="true" 
+                  (ngModelChange)="loadStudents()" ></p-dropdown>
   </div>
   <div>
-    <span class="one">Class teacher:</span>
-    <span class="two">{{classTeacherName}}</span>
+    <h3>Class Name: {{selectedOneClass ? selectedOneClass.name : 'none'}}</h3>
+    <h3>Class Teacher: {{classTeacherName}}</h3>
   </div>
-  <div>
+  <p-table [value]="classStudentsObjList">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-student>
+        <tr>
+            <td>{{student.firstName}}</td>
+            <td>{{student.lastName}}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+  <!-- <div> -->
     <!-- <app-single-student *ngFor="let i of classStudentList" [studentName]=i></app-single-student> -->
-    <app-single-student *ngFor="let i of classStudentsObjList" [studentObj]=i></app-single-student>
-  </div>
+    <!-- <app-single-student *ngFor="let i of classStudentsObjList" [studentObj]=i></app-single-student> -->
+  <!-- </div> -->
   <div>
-    <button routerLink="/formPage">Add Student</button>
+    <br>
+    <button pButton type="button" label="Add Student" routerLink="/formPage"></button>
   </div>
 </div>
