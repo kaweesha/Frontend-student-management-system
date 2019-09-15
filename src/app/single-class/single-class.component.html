@@ -5,10 +5,12 @@
                   placeholder="Select a Class" 
                   optionLabel="name" 
                   [showClear]="true" 
-                  (ngModelChange)="loadStudents()" ></p-dropdown>
+                  (ngModelChange)="loadStudents()"
+                  (ngModelChange)="loadTeacherName()" ></p-dropdown>
   </div>
   <div>
-    <h3>Class Name: {{selectedOneClass ? selectedOneClass.name : 'none'}}</h3>
+    <!-- <h3>Class Name: {{selectedOneClass ? selectedOneClass.name : 'select class'}}</h3> -->
+    <h3>Class Name: {{selectedOneClass ? selectedOneClass.name : ''}}</h3>
     <h3>Class Teacher: {{classTeacherName}}</h3>
   </div>
   <p-table [value]="classStudentsObjList">

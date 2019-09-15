@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Student } from '../shared/Student';
 import { RestApiService } from "../shared/rest-api.service";
 import { OneClass } from '../shared/OneClass';
+import { Teacher } from '../shared/Teacher';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class SingleClassComponent implements OnInit {
   selectedOneClass: OneClass;
 
   anyList: any = [];
+  anyObject: any;
   classStudentsObjList: Student[] =[];
 
   constructor(private router: Router, public restApi: RestApiService) {
@@ -32,17 +34,25 @@ export class SingleClassComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.classTeacherName = this.selectedClass.classTeacher;
+    // this.classTeacherName = this.selectedClass.classTeacher;
     this.className = this.selectedClass.className;
   }
 
   loadStudents() {
-    console.log("triggered");
     return this.restApi.getStudents(this.selectedOneClass.name).subscribe((data: {}) => {
       this.anyList = data;
       this.classStudentsObjList = this.anyList;
       console.log("classStudentsObjList.length: "+this.classStudentsObjList.length);
     })
+  }
+
+  loadTeacherName() {
+  console.log("triggered");
+  return this.restApi.getSingleTeacher(this.selectedOneClass.name).subscribe((data: {}) => {
+    this.anyObject = data;
+    this.classTeacherName = this.anyObject.teacherName;
+    console.log("classTeacherName: "+this.classTeacherName);
+  })    
   }
 
 }

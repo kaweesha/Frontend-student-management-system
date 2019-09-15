@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Student } from './Student';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { Teacher } from './Teacher';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@ export class RestApiService {
 
   // Define API
   apiURL = 'http://localhost:8080';
+  apiPart = '/Student-Management-System/api/';
 
   constructor(private http: HttpClient) { }
 
@@ -24,13 +26,13 @@ export class RestApiService {
       })
   } 
 
-  // HttpClient API get() method => fetch student list
+  // HttpClient API get() method => fetch student list by className
   getStudents(className): Observable<Student> {
     let params = new HttpParams().set('className', className);
     console.log(className);
 
     return this.http
-      .get<Student>(this.apiURL + '/Student-Management-System/api/students', { params: params })
+      .get<Student>(this.apiURL + this.apiPart + 'students', { params: params })
       .pipe(retry(1),
       catchError(this.handleError))
   }
@@ -38,7 +40,7 @@ export class RestApiService {
   // HttpClient API get() method => fetch single student by id
   getSingleStudent(id): Observable<Student> {
     return this.http
-       .get<Student>(this.apiURL + '/Student-Management-System/api/students' + id)
+       .get<Student>(this.apiURL + this.apiPart + 'students' + id)
        .pipe(retry(1),
        catchError(this.handleError))
   }
@@ -46,7 +48,7 @@ export class RestApiService {
   // HttpClient API post() method => create student
   createStudent(student): Observable<Student> {
     return this.http
-      .post<Student>(this.apiURL + '/Student-Management-System/api/students', JSON.stringify(student), this.httpOptions)
+      .post<Student>(this.apiURL + this.apiPart + 'students', JSON.stringify(student), this.httpOptions)
       .pipe(retry(1), 
       catchError(this.handleError))
   }
@@ -54,18 +56,26 @@ export class RestApiService {
   // HttpClient API put() method => update student
   updateStudent(student): Observable<Student> {
     return this.http
-      .put<Student>(this.apiURL + '/Student-Management-System/api/students', JSON.stringify(student), this.httpOptions)
+      .put<Student>(this.apiURL + this.apiPart + 'students', JSON.stringify(student), this.httpOptions)
       .pipe(retry(1), 
       catchError(this.handleError))
   }
 
-  // HttpClient API delete() method => Delete employee
+  // HttpClient API delete() method => Delete student
   deleteEmployee(id){
     return this.http
-      .delete<Student>(this.apiURL + '/Student-Management-System/api/students' + id, this.httpOptions )
+      .delete<Student>(this.apiURL + this.apiPart + 'students' + id, this.httpOptions )
       .pipe(retry(1), 
       catchError(this.handleError))
-  }    
+  }
+
+  // HttpClient API get() method => fetch single teacher by className
+  getSingleTeacher(className): Observable<Teacher> {
+    return this.http
+        .get<Teacher>(this.apiURL + this.apiPart + 'teachers/' + className)
+        .pipe(retry(1),
+        catchError(this.handleError))
+  }
 
   // Error handling 
   handleError(error) {
